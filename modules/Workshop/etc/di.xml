@@ -1,0 +1,46 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="PleaseWork\Workshop\Api\Data\PostInterface"
+            type="PleaseWork\Workshop\Model\PostRepository" />
+
+    <preference for="PleaseWork\Workshop\Api\Data\PublisherInterface"
+            type="PleaseWork\Workshop\Model\PublisherRepository"/>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="post_grid_listing_data_source" xsi:type="string">PleaseWork\Workshop\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="PleaseWork\Workshop\Model\ResourceModel\Post\Grid\Collection">
+        <arguments>
+        <argument name="mainTable" xsi:type="string">pleasework_workshop_post</argument>
+        <argument name="eventPrefix" xsi:type="string">pleasework_workshop_post_grid_collection</argument>
+        <argument name="eventObject" xsi:type="string">post_grid_collection</argument>
+        <argument name="resourceModel" xsi:type="string">PleaseWork\Workshop\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="publisher_grid_listing_data_source" xsi:type="string">PleaseWork\Workshop\Model\ResourceModel\Publisher\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="PleaseWork\Workshop\Model\ResourceModel\Publisher\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pleasework_workshop_publisher</argument>
+            <argument name="eventPrefix" xsi:type="string">pleasework_workshop_publisher_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">publisher_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">PleaseWork\Workshop\Model\ResourceModel\Publisher</argument>
+        </arguments>
+    </virtualType>
+
+
+
+</config>
+

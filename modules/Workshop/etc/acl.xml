@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+
+            <resource id="Magento_Backend::admin">
+
+                <resource id="PleaseWork_Workshop::workshop" title="WORKSHOP" sortOrder="51">
+                    <resource id="PleaseWork_Workshop::post" title="Posts" sortOrder="10" />
+                    <resource id="PleaseWork_Workshop::publisher" title="Publisher" sortOrder="10" />
+                    <resource id="PleaseWork_Workshop::workshop_configuration" title="Configuration" sortOrder="99" />
+                </resource>
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="PleaseWork_Workshop::workshop_config" title="Workshop"/>
+                        </resource>
+                    </resource>
+                </resource>
+
+            </resource>
+
+        </resources>
+    </acl>
+</config>

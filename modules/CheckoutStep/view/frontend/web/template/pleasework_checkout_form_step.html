@@ -1,0 +1,16 @@
+<div>
+    <form id="custom-checkout-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+        <fieldset class="fieldset">
+            <legend data-bind="i18n: 'Custom Checkout Form'"></legend>
+            <!-- ko foreach: getRegion('custom-checkout-form-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </fieldset>
+        <button type="reset">
+            <span data-bind="i18n: 'Reset'"></span>
+        </button>
+        <button type="button" data-bind="click: onSubmit" class="action">
+            <span data-bind="i18n: 'Submit'"></span>
+        </button>
+    </form>
+</div>

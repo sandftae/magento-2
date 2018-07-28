@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="email_stock_buy_template" label="This is email" file="email_stock_buy_template.html" type="html" module="PleaseWork_Workshop" area="frontend"/>
+</config>

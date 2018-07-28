@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_save_before">
+        <observer name="hard_observer_delete" instance="PleaseWork\Workshop\Observer\AddProductByStock"/>
+        <!--<observer name="hard_observer_delete" instance="PleaseWork\Workshop\Observer\SplitBundleProduct"/>-->
+    </event>
+
+
+    <event name="sales_order_place_after">
+        <observer name="email_after_stock_buy_template" instance="PleaseWork\Workshop\Observer\SendMailAfterAddNeedleSku"/>
+    </event>
+</config>

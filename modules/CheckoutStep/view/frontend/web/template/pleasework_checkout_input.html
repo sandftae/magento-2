@@ -1,0 +1,21 @@
+<div>
+    <form id="custom-checkout-form" class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+        <fieldset class="fieldset">
+            <legend data-bind="i18n: 'Information about you'"></legend>
+            <p></p>
+            <label for="name">Your name</label>
+            <input id="name" type="text">
+            <label for="phone">Your phone</label>
+            <input id="phone" type="number">
+            <label for="years">Your age</label>
+            <input id="years" type="text">
+
+            <!-- ko foreach: getRegion('custom-checkout-form-fields') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </fieldset>
+        <button type="reset">
+            <span data-bind="i18n: 'Reset'"></span>
+        </button>
+    </form>
+</div>

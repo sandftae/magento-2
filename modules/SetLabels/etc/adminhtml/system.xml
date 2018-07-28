@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<!---->
+<!-- Magecom -->
+<!-- NOTICE OF LICENSE -->
+<!-- This source file is subject to the Open Software License (OSL 3.0 )-->
+<!-- that is bundled with this package in the file LICENSE.txt. -->
+<!-- It is also available through the world-wide-web at this URL: -->
+<!-- http://opensource.org/licenses/osl-3.0.php -->
+<!-- If you did not receive a copy of the license and are unable to -->
+<!-- obtain it through the world-wide-web, please send an email -->
+<!-- to info@magecom.net so we can send you a copy immediately. -->
+<!-- @category Magecom -->
+<!-- @package Magecom_Setlabels -->
+<!-- @copyright Copyright (c) 2018 Magecom, Inc. (http://www.magecom.net) -->
+<!-- @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0) -->
+<!---->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="workshop_system_labels" translate="label" sortOrder="131" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Labels settings</label>
+            <tab>workshop</tab>
+            <resource>PleaseWork_SetLabels::labels_configuration</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Module Enable:</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="data_start_promotion" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>Start date of the promotion:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+                <field id="data_end_promotion" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <label>End of promotion start:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+            </group>
+            <group id="label_bundle_product" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Bundle product</label>
+                <field id="label_selected_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Please select the type of the mark for the image</tooltip>
+                    <label> Select type:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\Dropdown</source_model>
+                </field>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_description_selected_product" translate="label comment" type="editor" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Short description</tooltip>
+                    <label>Description:</label>
+                    <frontend_model>PleaseWork\SetLabels\Block\Editor\Editor</frontend_model>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>PleaseWork\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+                <field id="new_product_with" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="label_selected_type">1</field>
+                    </depends>
+                    <label>Сonsider the goods "new" with:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+            </group>
+            <group id="label_simple_product" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Simple product</label>
+                <field id="label_selected_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Please select the type of the mark for the image</tooltip>
+                    <label> Select type:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\Dropdown</source_model>
+                </field>
+                <field id="new_product_with" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="label_selected_type">1</field>
+                    </depends>
+                    <label>Сonsider the goods "new" with:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_description_selected_product" translate="label comment" type="editor" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Short description</tooltip>
+                    <label>Description:</label>
+                    <frontend_model>PleaseWork\SetLabels\Block\Editor\Editor</frontend_model>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>PleaseWork\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+            <group id="label_configurable_product" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurable product</label>
+                <field id="label_selected_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Please select the type of the mark for the image</tooltip>
+                    <label> Select type:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\Dropdown</source_model>
+                </field>
+                <field id="new_product_with" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="label_selected_type">1</field>
+                    </depends>
+                    <label>Сonsider the goods "new" with:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_description_selected_product" translate="label comment" type="editor" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Short description</tooltip>
+                    <label>Description:</label>
+                    <frontend_model>PleaseWork\SetLabels\Block\Editor\Editor</frontend_model>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>PleaseWork\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+            <group id="label_all_type_product" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>For all products</label>
+                <field id="label_selected_type" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Please select the type of the mark for the image</tooltip>
+                    <label> Select type:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\Dropdown</source_model>
+                </field>
+                <field id="new_product_with" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <depends>
+                        <field id="label_selected_type">1</field>
+                    </depends>
+                    <label>Сonsider the goods "new" with:</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>PleaseWork\SetLabels\Block\Date\Calendar</frontend_model>
+                </field>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_description_for_selected_product" translate="label comment" type="editor" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Short description</tooltip>
+                    <label>Description:</label>
+                    <frontend_model>PleaseWork\SetLabels\Block\Editor\Editor</frontend_model>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>PleaseWork\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>PleaseWork\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
