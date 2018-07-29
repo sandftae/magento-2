@@ -8,7 +8,6 @@
  */
 namespace PleaseWork\SetLabels\Helper\Label;
 
-use PleaseWork\SetLabels\Helper\Label\Constants;
 use PleaseWork\SetLabels\Block\LabelsSettings;
 
 /**
@@ -61,30 +60,33 @@ class Values
     /**
      * @var $labelsSettings
      */
-    public static $valuesConfig;
+    private static $valuesConfig;
+
+    /**
+     * @var $reflection
+     */
+    private static $reflectionConstants;
 
     /**
      * @param LabelsSettings $labelsSettings
+     * @throws \ReflectionException
      */
-    public static function _construct(LabelsSettings $labelsSettings)
-    {
+    public static function _construct(
+        LabelsSettings $labelsSettings
+    ) {
         self::$valuesConfig = $labelsSettings;
+        self::$reflectionConstants =  new \ReflectionClass(Constants::class);
     }
 
     /**
      * @return array
-     */
-    public static function getClassProperties():array
-    {
-        return get_class_vars(self::class);
-    }
-
-    /**
-     * @return array
+     * @throws \ReflectionException
      */
     public static function getClassConstantsProperties():array
     {
-        return get_class_vars(Constants::class);
+        $constClass = new \ReflectionClass(Constants::class);
+
+        return $constClass->getConstants();
     }
 
     /**
@@ -93,7 +95,6 @@ class Values
      */
     public static function prepareNameToCompare(array $data):array
     {
-        $arrVar = [];
         foreach ($data as $variable => $value) {
             if (stristr((string) $variable, '_')) {
                 $data[$variable] = self::supportToCompare($variable);
@@ -110,38 +111,22 @@ class Values
     {
         $data = null;
         $data = explode('_', $variable);
-        return (string) strtolower($data[0]) . ucfirst($data[1]);
+        return (string) strtolower($data[0]) .  ucfirst(strtolower($data[1]));
     }
 
     /**
-     * @return void
+     * @throws \ReflectionException
      */
     public static function instance()
     {
-        self::$bundleImage          = self::$valuesConfig->getScopeShow()->getValue(Constants::BUNDLE_IMAGE);
-        self::$bundleOpacity        = self::$valuesConfig->getScopeShow()->getValue(Constants::BUNDLE_OPACITY);
-        self::$bundlePosition       = self::$valuesConfig->getScopeShow()->getValue(Constants::BUNDLE_POSITION);
-        self::$bundleSize           = self::$valuesConfig->getScopeShow()->getValue(Constants::BUNDLE_SIZE);
+        $propConstantsClass = self::getClassConstantsProperties();
+        $constants = self::prepareNameToCompare($propConstantsClass);
 
-        self::$simpleImage          = self::$valuesConfig->getScopeShow()->getValue(Constants::SIMPLE_IMAGE);
-        self::$simpleOpacity        = self::$valuesConfig->getScopeShow()->getValue(Constants::SIMPLE_OPACITY);
-        self::$simplePosition       = self::$valuesConfig->getScopeShow()->getValue(Constants::SIMPLE_POSITION);
-        self::$simpleSize           = self::$valuesConfig->getScopeShow()->getValue(Constants::SIMPLE_SIZE);
-
-        self::$configurableSize     = self::$valuesConfig->getScopeShow()->getValue(Constants::CONFIGURABLE_SIZE);
-        self::$configurableImage    = self::$valuesConfig->getScopeShow()->getValue(Constants::CONFIGURABLE_IMAGE);
-        self::$configurablePosition = self::$valuesConfig->getScopeShow()->getValue(Constants::CONFIGURABLE_POSITION);
-        self::$configurableOpacity  = self::$valuesConfig->getScopeShow()->getValue(Constants::CONFIGURABLE_OPACITY);
-
-        self::$toAllSize            = self::$valuesConfig->getScopeShow()->getValue(Constants::ALL_SIZE);
-        self::$toAllImage           = self::$valuesConfig->getScopeShow()->getValue(Constants::ALL_IMAGE);
-        self::$toAllPosition        = self::$valuesConfig->getScopeShow()->getValue(Constants::ALL_POSITION);
-        self::$toAllOpacity         = self::$valuesConfig->getScopeShow()->getValue(Constants::ALL_OPACITY);
-
-        self::$uniqueImage          = self::$valuesConfig->getScopeShow()->getValue(Constants::UNIQUE_IMAGE);
-        self::$uniqueOpacity        = self::$valuesConfig->getScopeShow()->getValue(Constants::UNIQUE_OPACITY);
-        self::$uniquePosition       = self::$valuesConfig->getScopeShow()->getValue(Constants::UNIQUE_POSITION);
-        self::$uniqueSize           = self::$valuesConfig->getScopeShow()->getValue(Constants::UNIQUE_SIZE);
-        self::$uniqueSku            = self::$valuesConfig->getScopeShow()->getValue(Constants::UNIQUE_SKU);
+        foreach ($constants as $key => $constant) {
+            if (property_exists(self::class, $constant)) {
+                $constKey = self::$reflectionConstants->getConstant($key);
+                static::$$constant = self::$valuesConfig->getScopeShow()->getValue($constKey);
+            }
+        }
     }
 }

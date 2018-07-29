@@ -37,6 +37,7 @@ class Image extends MagentoImageHelper
      * @param LabelsSettings $labelsSettings
      * @param Values $values
      * @param PlaceholderFactory|null $placeholderFactory
+     * @throws \ReflectionException
      */
     public function __construct(
         Context $context,
@@ -63,7 +64,8 @@ class Image extends MagentoImageHelper
     /**
      * @param MagentoImageHelper $image
      * @param $imageObject
-     * @return mixed
+     * @return MagentoImageHelper
+     * @throws \ReflectionException
      */
     public function afterInit(MagentoImageHelper $image, $imageObject):MagentoImageHelper
     {
