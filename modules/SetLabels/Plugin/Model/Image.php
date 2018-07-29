@@ -8,16 +8,20 @@
  */
 namespace PleaseWork\SetLabels\Plugin\Model;
 
-use Magento\Catalog\Model\Product\Image as MagentoProductImage;
 use PleaseWork\SetLabels\Block\LabelsSettings;
-use PleaseWork\SetLabels\Helper\Label\Constants;
-use PleaseWork\SetLabels\Helper\Label\ParseValues;
+use Magento\Catalog\Helper\Image as MagentoImageHelper;
+use \Magento\Catalog\Model\View\Asset\PlaceholderFactory;
+use \Magento\Framework\View\ConfigInterface;
+use \Magento\Framework\View\Asset\Repository;
+use \Magento\Catalog\Model\Product\ImageFactory;
+use \Magento\Framework\App\Helper\Context;
+use PleaseWork\SetLabels\Helper\Label\Values;
 
 /**
  * Class Image
  * @package PleaseWork\SetLabels\Plugin\Model
  */
-class Image
+class Image extends MagentoImageHelper
 {
     /**
      * @var LabelsSettings
@@ -26,52 +30,89 @@ class Image
 
     /**
      * Image constructor.
+     * @param Context $context
+     * @param ImageFactory $productImageFactory
+     * @param Repository $assetRepo
+     * @param ConfigInterface $viewConfig
      * @param LabelsSettings $labelsSettings
-     * @param ParseValues $helper
+     * @param Values $values
+     * @param PlaceholderFactory|null $placeholderFactory
      */
-    public function __construct(LabelsSettings $labelsSettings, ParseValues $helper)
-    {
+    public function __construct(
+        Context $context,
+        ImageFactory $productImageFactory,
+        Repository $assetRepo,
+        ConfigInterface $viewConfig,
+        LabelsSettings $labelsSettings,
+        Values $values,
+        PlaceholderFactory $placeholderFactory = null
+    ) {
+        # pls, more construct methods in the same class
+        $values::_construct($labelsSettings);
+
+        parent::__construct(
+            $context,
+            $productImageFactory,
+            $assetRepo,
+            $viewConfig,
+            $placeholderFactory
+        );
         $this->labelsSettings = $labelsSettings;
     }
 
     /**
-     * @param MagentoProductImage $image
-     * @param $position
-     * @return array
+     * @param MagentoImageHelper $image
+     * @param $imageObject
+     * @return mixed
      */
-    public function beforeSetWatermarkPosition(MagentoProductImage $image, $position):array
+    public function afterInit(MagentoImageHelper $image, $imageObject):MagentoImageHelper
     {
-        return [$this->labelsSettings->getScopeShow()->getValue(Constants::ALL_POSITION)];
+        Values::instance();
+        $data = $imageObject->getProduct()->getData();
+        $type = $data['type_id'];
+        $sku = $data['sku'];
+
+        # enabled/disabled logic
+
+        if ($sku == Values::$uniqueSku) {
+            $imageObject->watermark(
+                Values::$uniqueImage,
+                Values::$uniquePosition,
+                Values::$uniqueSize,
+                Values::$uniqueOpacity
+            );
+        } else {
+            $this->instanceWatermark($type, $imageObject);
+        }
+        return $imageObject;
     }
 
     /**
-     * @param MagentoProductImage $image
-     * @param $file
-     * @return array
+     * @param string $type
+     * @param MagentoImageHelper $imageObject
      */
-    public function beforeSetWatermarkFile(MagentoProductImage $image, $file):array
+    protected function instanceWatermark(string $type, MagentoImageHelper $imageObject)
     {
-        return [$this->labelsSettings->getScopeShow()->getValue(Constants::ALL_IMAGE)];
-    }
+        switch ($type) {
+            case 'simple':
+                $imageObject->watermark(
+                    Values::$simpleImage,
+                    Values::$simplePosition,
+                    Values::$simpleSize,
+                    Values::$simpleOpacity
+                );
+                break;
 
-    /**
-     * @param MagentoProductImage $image
-     * @param $opacity
-     * @return array
-     */
-    public function beforeSetWatermarkImageOpacity(MagentoProductImage $image, $opacity):array
-    {
-        return [$this->labelsSettings->getScopeShow()->getValue(Constants::ALL_OPACITY)];
-    }
-
-    /**
-     * @param MagentoProductImage $image
-     * @param $size
-     * @return array
-     */
-    public function beforeSetWatermarkSize(MagentoProductImage $image, $size):array
-    {
-        $size = $this->labelsSettings->getScopeShow()->getValue(Constants::ALL_SIZE);
-        return [ParseValues::parseSize($size)];
+            case 'bundle':
+                $imageObject->watermark(
+                    Values::$bundleImage,
+                    Values::$bundlePosition,
+                    Values::$bundleSize,
+                    Values::$bundleOpacity
+                );
+                break;
+            default:
+                break;
+        }
     }
 }

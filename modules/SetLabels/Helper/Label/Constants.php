@@ -64,4 +64,16 @@ class Constants
     const ALL_POSITION      = 'workshop_system_labels/label_all_type_product/label_position';
     const ALL_OPACITY       = 'workshop_system_labels/label_all_type_product/label_opacity';
     const ALL_NEW_WITH      = 'workshop_system_labels/label_all_type_product/new_product_with';
+
+    /**
+     * Block for constants unique-type products
+     */
+    const UNIQUE_TYPE       = 'workshop_system_labels/unique_product/label_selected_type';
+    const UNIQUE_SIZE          = 'workshop_system_labels/unique_product/image_size';
+    const UNIQUE_DESCRIPTION   = 'workshop_system_labels/unique_product/label_description_selected_product';
+    const UNIQUE_IMAGE         = 'workshop_system_labels/unique_product/label_image';
+    const UNIQUE_POSITION      = 'workshop_system_labels/unique_product/label_position';
+    const UNIQUE_OPACITY       = 'workshop_system_labels/unique_product/label_opacity';
+    const UNIQUE_NEW_WITH      = 'workshop_system_labels/unique_product/new_product_with';
+    const UNIQUE_SKU           = 'workshop_system_labels/unique_product/unique_sku';
 }
