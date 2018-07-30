@@ -19,7 +19,7 @@ class LabelPosition implements ArrayInterface
     /**
      * @return array
      */
-    public function toOptionArray()
+    public function toOptionArray():array
     {
         return [
             ['value' => 'not-selected', 'label' => __('not selected')],

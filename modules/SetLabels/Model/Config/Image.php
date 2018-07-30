@@ -28,7 +28,7 @@ class Image extends MagentoImage
      * @return string
      * @throw \Magento\Framework\Exception\LocalizedException
      */
-    protected function _getUploadDir()
+    protected function _getUploadDir():string
     {
         return  $this->_mediaDirectory->getAbsolutePath(self::UPLOAD_DIR);
     }
@@ -38,7 +38,7 @@ class Image extends MagentoImage
      *
      * @return boolean
      */
-    protected function _addWhetherScopeInfo()
+    protected function _addWhetherScopeInfo():bool
     {
         return true;
     }
@@ -48,7 +48,7 @@ class Image extends MagentoImage
      *
      * @return string[]
      */
-    protected function _getAllowedExtensions()
+    protected function _getAllowedExtensions():array
     {
         return ['jpg', 'jpeg', 'gif', 'png', 'svg'];
     }

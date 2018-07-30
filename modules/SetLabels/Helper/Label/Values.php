@@ -79,17 +79,6 @@ class Values
     }
 
     /**
-     * @return array
-     * @throws \ReflectionException
-     */
-    public static function getClassConstantsProperties():array
-    {
-        $constClass = new \ReflectionClass(Constants::class);
-
-        return $constClass->getConstants();
-    }
-
-    /**
      * @param array $data
      * @return array
      */
@@ -109,18 +98,16 @@ class Values
      */
     public static function supportToCompare(string $variable):string
     {
-        $data = null;
         $data = explode('_', $variable);
         return (string) strtolower($data[0]) .  ucfirst(strtolower($data[1]));
     }
 
     /**
-     * @throws \ReflectionException
+     * @return void
      */
     public static function instance()
     {
-        $propConstantsClass = self::getClassConstantsProperties();
-        $constants = self::prepareNameToCompare($propConstantsClass);
+        $constants = self::prepareNameToCompare(self::$reflectionConstants->getConstants());
 
         foreach ($constants as $key => $constant) {
             if (property_exists(self::class, $constant)) {

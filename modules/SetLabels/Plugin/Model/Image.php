@@ -65,7 +65,6 @@ class Image extends MagentoImageHelper
      * @param MagentoImageHelper $image
      * @param $imageObject
      * @return MagentoImageHelper
-     * @throws \ReflectionException
      */
     public function afterInit(MagentoImageHelper $image, $imageObject):MagentoImageHelper
     {
@@ -92,6 +91,7 @@ class Image extends MagentoImageHelper
     /**
      * @param string $type
      * @param MagentoImageHelper $imageObject
+     * @return void
      */
     protected function instanceWatermark(string $type, MagentoImageHelper $imageObject)
     {

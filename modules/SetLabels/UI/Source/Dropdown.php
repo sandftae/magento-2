@@ -19,7 +19,7 @@ class Dropdown implements ArrayInterface
     /**
      * @return array
      */
-    public function toOptionArray()
+    public function toOptionArray():array
     {
         return [
             ['value' => 0, 'label' => __('not selected')],

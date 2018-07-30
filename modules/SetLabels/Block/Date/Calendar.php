@@ -42,7 +42,7 @@ class Calendar extends Field
      * @param AbstractElement $element
      * @return string
      */
-    protected function _getElementHtml(AbstractElement $element)
+    protected function _getElementHtml(AbstractElement $element):string
     {
         $baseURL = $this->getBaseUrl();
         $html = $element->getElementHtml();
