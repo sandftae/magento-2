@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels Calendar::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Block\Date;
 
 use Magento\Framework\Registry;
