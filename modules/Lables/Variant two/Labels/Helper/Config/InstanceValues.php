@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_Labels LabelsSettings::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\Labels\Helper\Config;
 
 use PleaseWork\Labels\Model\Labels\Settings\LabelsSettings;
