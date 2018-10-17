@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels Constants::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Helper\Label;
 
 /**
