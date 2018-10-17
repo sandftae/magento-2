@@ -1,7 +1,5 @@
 <?php
 /**
- * Magecom_SetLabels LabelPosition::class
- *
  * @category Magecom
  * @package Magecom_Workshop
  * @author Magecom
