@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_Labels Image::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\Labels\Plugin\Model;
 
 use Magento\Catalog\Helper\Image as MagentoImageHelper;
