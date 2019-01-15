@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels Editor::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Block\Editor;
 
 use Magento\Backend\Block\Template\Context;

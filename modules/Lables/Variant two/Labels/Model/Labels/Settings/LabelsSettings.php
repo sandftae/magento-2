@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_Labels LabelsSettings::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\Labels\Model\Labels\Settings;
 
 use Magento\Framework\View\Element\Template;

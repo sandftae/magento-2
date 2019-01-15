@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels InstallData::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;

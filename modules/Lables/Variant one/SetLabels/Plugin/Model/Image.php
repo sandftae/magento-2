@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels Image::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Plugin\Model;
 
 use PleaseWork\SetLabels\Block\LabelsSettings;

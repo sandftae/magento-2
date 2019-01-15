@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_Labels Dropdown::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\setLabels\UI\Source;
 
 use Magento\Framework\Option\ArrayInterface;

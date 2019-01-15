@@ -1,11 +1,5 @@
 <?php
-/**
- * Magecom_SetLabels Image::class
- *
- * @category Magecom
- * @package Magecom_Workshop
- * @author Magecom
- */
+
 namespace PleaseWork\SetLabels\Model\Config;
 
 use \Magento\Config\Model\Config\Backend\Image as MagentoImage;
