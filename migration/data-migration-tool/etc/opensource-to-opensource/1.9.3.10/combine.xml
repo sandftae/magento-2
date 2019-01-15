@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<split xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="../../split.xsd">-->
+<split xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+       xs:noNamespaceSchemaLocation="../../split_combine_process.xsd">
+    <settings>
+        <source>
+            <move>
+                <field>migration_combine_me_table_1.account_id</field>
+                <to>migration_combine_me_table.account_id</to>
+            </move>
+            <move>
+                <field>migration_combine_me_table_2.lastname_connect</field>
+                <to>migration_combine_me_table.lastname_connect</to>
+            </move>
+            <move>
+                <field>migration_combine_me_table_2.age</field>
+                <to>migration_combine_me_table.age</to>
+            </move>
+            <move>
+                <field>migration_combine_me_table_2.is_new</field>
+                <to>migration_combine_me_table.is_new</to>
+            </move>
+        </source>
+    </settings>
+    <from>
+        <documents>
+            <document>migration_combine_me_table_1</document>
+        </documents>
+        <documents>
+            <document>migration_combine_me_table_2</document>
+        </documents>
+    </from>
+    <transfer>
+        <document>migration_combine_me_table</document>
+    </transfer>
+</split>

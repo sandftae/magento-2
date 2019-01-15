@@ -1,0 +1,14 @@
+{
+    "name": "magento/data-migration-tool",
+    "description": "Migration Tool",
+    "version": "2.3.0",
+    "require": {
+        "symfony/console": "~4.1.0",
+        "magento/framework": "*",
+        "monolog/monolog": "^1.17"
+    },
+    "autoload": {
+        "psr-4": {"Migration\\": ["src/Migration", "tests/unit/testsuite/Migration"]},
+        "files" : ["src/Migration/cli_commands.php", "registration.php"]
+    }
+}
