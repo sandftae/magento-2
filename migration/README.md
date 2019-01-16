@@ -8,6 +8,13 @@
 Расширение не может притендовать на что-либо. 
 Цель - повысить понимание работы иструмента и работы с инструментом. 
 Описание реализации в пункте `migrate:split`. Все перед ним - простое описание процесса миграции
+Обработчики в директории `Migration\Step\CustomizeTransferredData\Split`. 
+`Split Reader` и `SplitFactory` в дирекории `Migration\Reader`. 
+`Split interfaces` - в директории `App`. 
+`mode 'split' runner` - обработчик в директории `Migration\Mode`. 
+`mode 'split' declaration`- обработчик `MigrateSplitCommand` в директории `Migration\Console`. 
+
+
 
 ### migrate:data
 
