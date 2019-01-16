@@ -6,6 +6,13 @@
 Расширение не может притендовать на что-либо. 
 Цель - повысить понимание работы иструмента и работы с инструментом.
 
+Обработчики в директории `Migration\Step\CustomizeTransferredData\Split`. 
+`Split Reader` и `SplitFactory` в дирекории `Migration\Reader`. 
+`Split interfaces` - в директории `App`. 
+`mode 'split' runner` - обработчик в директории `Migration\Mode`. 
+`mode 'split' declaration`- обработчик `MigrateSplitCommand` в директории `Migration\Console`. 
+
+
 #### Игнорирование таблицы
 для source таблиц (т.е. из М1 БД):
 ```xml
