@@ -1,0 +1,13 @@
+{
+    "sandftae_shipping_countries": {
+        "column": {
+            "id": true,
+            "country_name": true,
+            "price": true,
+            "abbr": true
+        },
+        "index": {
+            "SANDFTAE_SHIPPING_COUNTRIES_ID": true
+        }
+    }
+}

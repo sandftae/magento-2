@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="AdminSimpleProductData" type="product">
+        <data key="name" unique="suffix">Custom-product</data>
+        <data key="sku" unique="suffix">hey-ho-100500</data>
+        <data key="price">777</data>
+        <data key="taxClass">[value='9']</data>
+        <data key="quantity">100500</data>
+        <data key="stockStatus">[value='1']</data>
+        <data key="length">57</data>
+        <data key="width">68</data>
+        <data key="height">55</data>
+        <data key="weight">[value='0']</data>
+        <data key="saveSuccess">You saved the product.</data>
+    </entity>
+</entities>

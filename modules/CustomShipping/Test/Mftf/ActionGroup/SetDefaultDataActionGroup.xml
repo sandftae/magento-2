@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="SetDefaultData" >
+        <arguments>
+            <argument name="import"/>
+            <argument name="section"/>
+        </arguments>
+
+        <amOnPage url="{{AdminShippingPage.url}}" stepKey="adminShippingPageOpen"/>
+        <waitForPageLoad time="30" stepKey="adminShippingPageOpenLoad"/>
+
+        <fillField userInput="{{import.title}}"
+                   selector="{{section.title}}"
+                   stepKey="setShippingTitleStep"/>
+
+        <fillField userInput="{{import.methodName}}"
+                   selector="{{section.methodName}}"
+                   stepKey="setShippingMethodNameStep"/>
+
+        <fillField userInput="{{import.defaultPrice}}"
+                   selector="{{section.defaultPrice}}"
+                   stepKey="setShippingDefaultPriceStep"/>
+
+        <selectOption userInput="{{import.rewriteYes}}"
+                      selector="{{section.rewrite}}"
+                      stepKey="setRewriteYesStep"/>
+
+        <attachFile userInput="{{import.fileNotValid}}" selector="{{section.attachFile}}" stepKey="attachNotValidFile"/>
+
+        <click selector="{{section.save}}" stepKey="saveConfigStep_1" />
+        <wait time="2" stepKey="waitForFileValidationEndStep" />
+        <waitForPageLoad time="30" stepKey="waitForSaveEndedStep_1"/>
+
+        <see userInput="{{import.errorMsg}}"
+             selector="{{section.errorMsg}}"
+             stepKey="assertErrorValidStep"/>
+
+        <attachFile userInput="{{import.fileValid}}" selector="{{section.attachFile}}" stepKey="attachValidFile"/>
+
+        <click selector="{{section.save}}" stepKey="saveConfigStep_2" />
+
+        <see userInput="{{import.saveSuccess}}"
+             selector="{{section.saveSuccess}}"
+             stepKey="assertSaveSuccessStep"/>
+
+        <waitForPageLoad time="30" stepKey="waitForSaveEndedStep_2"/>
+
+        <click selector="{{section.download}}" stepKey="downloadNewFileStep" />
+
+        <wait time="2" stepKey="waitForFileDownloadStartStep" />
+
+        <see userInput="{{import.downloadSuccess}}"
+             selector="{{section.downloadSuccess}}"
+             stepKey="assertDownloadSuccessStep"/>
+
+        <wait time="2" stepKey="waitForFileDownloadEndStep" />
+    </actionGroup>
+</actionGroups>

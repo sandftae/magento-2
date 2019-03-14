@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+* test start:
+* vendor/bin/mftf run:test -f CheckImportExportProcessTest
+*
+* test generate:
+* vendor/bin/mftf generate:tests -f CheckImportExportProcessTest
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="CheckImportExportProcessTest">
+        <!-- Annotations -->
+        <annotations>
+            <features value="Import"/>
+            <stories value="Check the import/export process"/>
+            <title value="Check the import/export process unique"/>
+            <description value="Admin should check the successful export and import of data"/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="MAGETWO-24354"/>
+            <group value="import"/>
+        </annotations>
+
+        <!-- logout -->
+        <after>
+            <amOnPage url="admin/admin/auth/logout/" stepKey="amOnLogoutPage"/>
+        </after>
+
+        <!-- Login admin -->
+        <actionGroup ref="LoginAsAdmin" stepKey="loginAsAdminCustom"/>
+
+        <!-- Fill in the fields in the admin panel -->
+        <actionGroup ref="SetDefaultData" stepKey="setDefaultDataInShipping">
+            <argument name="import" value="ImportProcessData" />
+            <argument name="section" value="AdminShippingSection" />
+        </actionGroup>
+
+        <!-- Create a product to test the purchase -->
+        <actionGroup ref="CreateProductToBuy" stepKey="createProductToBuy">
+            <argument name="product" value="AdminSimpleProductData" />
+            <argument name="section" value="AdminShippingSection" />
+        </actionGroup>
+
+        <!-- Check the availability of the created goods on the front of the store -->
+        <actionGroup ref="CheckAvailabilityAtStoreFront" stepKey="checkAvailabilityAtStoreFrontStep">
+            <argument name="product" value="AdminSimpleProductData" />
+            <argument name="section" value="AdminShippingSection" />
+        </actionGroup>
+
+        <!-- Buy a product -> Fill in the delivery fields -> Check prices for countries entered from CSV file -->
+        <actionGroup ref="StorefrontBuyNewProduct" stepKey="buyNewProductActionProduct">
+            <argument name="product" value="AdminSimpleProductData" />
+            <argument name="section" value="AdminShippingSection" />
+            <argument name="shipping" value="ShippingProcessData" />
+            <argument name="import" value="ImportProcessData" />
+        </actionGroup>
+
+        <!-- Delete previously created product -->
+        <actionGroup ref="DeleteUsingCustomProduct" stepKey="deleteProduct">
+            <argument name="product" value="AdminSimpleProductData"/>
+            <argument name="page" value="AdminSimpleProductPage" />
+        </actionGroup>
+    </test>
+</tests>

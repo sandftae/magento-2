@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <page name="AdminShippingPage" url="/admin/system_config/edit/section/carriers/" area="admin" module="Sandftae_CustomShipping" />
+    <page name="AdminSimpleProductPage" url="/catalog/product/" area="admin" module="Sandftae_CustomShipping" />
+    <page name="AdminCheckoutPage" url="/checkout/cart/" area="frontend" module="Sandftae_CustomShipping" />
+</pages>
+

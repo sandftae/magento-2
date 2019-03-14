@@ -1,0 +1,16 @@
+<!-- ko if: isEnabled -->
+<div class="donation_amount col-mp mp-12">
+    <h3><span data-bind="html: getShortDescription"></span></h3>
+
+    <input type="checkbox" name="add_donation" data-bind="checked: isDonate, event:{ change: checkIsDonate}, attr: {id: 'add_donation'}"/>
+    <label data-bind="attr: {for: 'add_donation'}"><span data-bind="i18n: 'donate'"></span></label>
+    <!-- ko if: isDonate -->
+    <select class="donation-rates" data-bind="event:{ change: changeDonationAmount}, options: getDonationOption" style="width:150px;"></select>
+    <label>
+        <span data-bind="i18n: 'Please, chose amount to donate'"></span>
+    </label>
+    <!-- /ko -->
+    <hr>
+</div>
+
+<!-- /ko -->

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="ImportProcessData" type="import">
+        <data key="title" unique="suffix">Super_Shipping_</data>
+        <data key="methodName" unique="prefix">_fixed_delivery_</data>
+        <data key="defaultPrice">45.15</data>
+        <data key="fileValid">shipping.csv</data>
+        <data key="fileNotValid">shipping_not_valid.csv</data>
+        <data key="rewriteYes">Yes</data>
+        <data key="rewriteNo">No</data>
+        <data key="saveSuccess">You saved the configuration.</data>
+        <data key="errorMsg">Invalid CSV file. Check the file type and the equality of
+            the structure of the loaded file and the table in the database</data>
+        <data key="downloadSuccess">file transferred</data>
+    </entity>
+</entities>

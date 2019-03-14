@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="CreateProductToBuy">
+        <arguments>
+            <argument name="product"/>
+            <argument name="section"/>
+        </arguments>
+
+        <amOnPage url="{{AdminSimpleProductPage.url}}" stepKey="AdminSimpleProductPageOpen"/>
+        <waitForPageLoad time="30" stepKey="AdminSimpleProductPageLoad"/>
+
+        <!-- Click on grid add button -->
+        <click stepKey="rightSubBtnClickBtn"
+               selector="{{AdminShippingSection.rightSubBtnAddBtn}}"/>
+
+        <!-- Choice of a simple product -->
+        <click stepKey="simpleProductClickBtn"
+               selector="{{AdminShippingSection.simpleProductBtn}}"/>
+        <waitForPageLoad time="30" stepKey="simpleProductBtnClickEvent"/>
+        <!-- Preparatory steps:START -->
+
+        <fillField userInput="{{product.name}}"
+                   selector="{{section.name}}"
+                   stepKey="productSimpleInsertName"/>
+
+        <fillField userInput="{{product.sku}}"
+                   selector="{{section.sku}}"
+                   stepKey="productSimpleInsertSku"/>
+
+        <fillField userInput="{{product.price}}"
+                   selector="{{section.price}}"
+                   stepKey="productSimpleInsertPrice"/>
+
+        <selectOption userInput="{{product.taxClass}}"
+                      selector="{{section.taxClass}}"
+                      stepKey="productSimpleInsertPriceTaxClass"/>
+
+        <fillField userInput="{{product.quantity}}"
+                   selector="{{section.quantity}}"
+                   stepKey="productSimpleInsertQuantity"/>
+
+        <selectOption userInput="{{product.stockStatus}}"
+                      selector="{{section.stockStatus}}"
+                      stepKey="productSimpleInsertPriceStockStatus"/>
+
+        <fillField userInput="{{product.length}}"
+                   selector="{{section.length}}"
+                   stepKey="productSimpleInsertLength"/>
+
+        <fillField userInput="{{product.width}}"
+                   selector="{{section.width}}"
+                   stepKey="productSimpleInsertWidth"/>
+
+        <fillField userInput="{{product.height}}"
+                   selector="{{section.height}}"
+                   stepKey="productSimpleInsertHeight"/>
+
+        <click stepKey="save" selector="{{section.saveProduct}}"/>
+
+        <waitForPageLoad time="30" stepKey="AdminSimpleProductSaveWaitStep"/>
+
+        <see userInput="{{product.saveSuccess}}"
+             selector="{{section.saveSuccess}}"
+             stepKey="assertSaveSuccessStep"/>
+
+        <waitForPageLoad time="30" stepKey="waitForSaveEndedStep"/>
+    </actionGroup>
+</actionGroups>

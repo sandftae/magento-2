@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sandftae_shipping_countries" resource="default" engine="innodb" comment="List of countries for extension">
+        <column xsi:type="int" name="id" padding="11" unsigned="false" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="country_name" padding="255" nullable="false" comment="Full country name"/>
+        <column xsi:type="int" name="price" padding="11" nullable="false" unsigned="false" comment="Shipping cost"/>
+        <column xsi:type="varchar" name="abbr" padding="255" nullable="false" comment="Abbreviated name of the country"/>
+        <index referenceId="sandftae_shipping_countries" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="workshop_labels" translate="label" sortOrder="133" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Labels settings (version 2)</label>
+            <tab>workshop</tab>
+            <resource>Sandftae_SetLabels::labels_configuration</resource>
+
+            <group id="label_new" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurable for new label</label>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>Sandftae\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>Sandftae\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+            <group id="label_bestseller" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurable for 'Best Seller' label</label>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>Sandftae\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>Sandftae\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+            <group id="label_discount" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurable for 'Discount' label</label>
+                <field id="image_size" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image size:</label>
+                    <comment>the size of the picture should be in the format 00x00</comment>
+                    <tooltip>the size of the picture should be in the format 00x00</tooltip>
+                </field>
+                <field id="label_image" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="5" showInDefault="1" showInWebsite="1" >
+                    <label>Download file:</label>
+                    <tooltip>Please, upload your file</tooltip>
+                    <comment>File type must bee jpg, jpeg, png</comment>
+                    <backend_model>Sandftae\SetLabels\Model\Config\Image</backend_model>
+                    <base_url type="media" scope_info="1">catalog/product/watermark</base_url>
+                </field>
+                <field id="label_position" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <tooltip>Select the location of the labels</tooltip>
+                    <label>Location of the labels:</label>
+                    <source_model>Sandftae\SetLabels\UI\Source\LabelPosition</source_model>
+                </field>
+                <field id="label_opacity" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Opacity of the label:</label>
+                    <tooltip>Opacity of the label</tooltip>
+                    <comment>must be int</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

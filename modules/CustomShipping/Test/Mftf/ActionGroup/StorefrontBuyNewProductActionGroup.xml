@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="StorefrontBuyNewProduct" >
+        <arguments>
+            <argument name="product"/>
+            <argument name="section"/>
+            <argument name="shipping"/>
+            <argument name="import"/>
+        </arguments>
+
+        <click selector="{{section.addToCart}}" stepKey="addToCartProductStep" />
+        <waitForPageLoad time="30" stepKey="waitForOpenMiniCartStep"/>
+
+        <see selector="{{section.successAddMsg}}"
+             userInput="You added {{product.name}} to your shopping cart." stepKey="seeAddedToCartMessageStep"/>
+
+        <amOnPage url="{{AdminCheckoutPage.url}}" stepKey="AdminSimpleProductPageOpen"/>
+        <click selector="{{section.proceedToCheckout}}" stepKey="proceedToCheckoutStep" />
+        <waitForPageLoad time="30" stepKey="waitForOpenCheckoutStep"/>
+
+        <see selector="{{section.shippingAddressMsg}}"
+             userInput="{{shipping.shippingAddressMsg}}" stepKey="seeShippingAddressMsgStep"/>
+
+        <see selector="{{section.shippingMethodsMsg}}"
+             userInput="{{shipping.shippingMethodsMsg}}" stepKey="seeShippingMethodsMsgStep"/>
+
+       <!-- test for first country:START -->
+        <selectOption userInput="{{shipping.countryUA}}"
+                      selector="{{section.selectCountry}}"
+                      stepKey="setDeliveryCountryUAStep"/>
+
+        <wait time="5" stepKey="waitForAjaxUpdatedInfoAboutDeliveryToCountry_1"/>
+
+        <see userInput="{{shipping.countryUAPrice}}"
+             selector="{{section.seePrice}}"
+             stepKey="seePriceStep_1"/>
+
+        <see userInput="{{import.methodName}}"
+             selector="{{section.seeMethodName}}"
+             stepKey="seeMethodNameStep_1"/>
+
+        <see userInput="Shipping cost for {{shipping.countryUA}}"
+             selector="{{section.seeMethodTitle}}"
+             stepKey="seeMethodTitleStep_1"/>
+        <!-- test for first country:END -->
+
+
+        <!-- test for second country:START -->
+        <selectOption userInput="{{shipping.countryUK}}"
+                      selector="{{section.selectCountry}}"
+                      stepKey="setDeliveryCountryUKStep"/>
+
+        <wait time="5" stepKey="waitForAjaxUpdatedInfoAboutDeliveryToCountry_2"/>
+
+        <see userInput="{{shipping.countryUKPrice}}"
+             selector="{{section.seePrice}}"
+             stepKey="seePriceStep_2"/>
+
+        <see userInput="{{import.methodName}}"
+             selector="{{section.seeMethodName}}"
+             stepKey="seeMethodNameStep_2"/>
+
+        <see userInput="Shipping cost for {{shipping.countryUK}}"
+             selector="{{section.seeMethodTitle}}"
+             stepKey="seeMethodTitleStep_2"/>
+        <!-- test for second country:END -->
+
+        <!-- test for third country:START -->
+        <selectOption userInput="{{shipping.countryFR}}"
+                      selector="{{section.selectCountry}}"
+                      stepKey="setDeliveryCountryFRStep"/>
+
+        <wait time="5" stepKey="waitForAjaxUpdatedInfoAboutDeliveryToCountry_3"/>
+
+        <see userInput="{{shipping.countryFRPrice}}"
+             selector="{{section.seePrice}}"
+             stepKey="seePriceStep_3"/>
+
+        <see userInput="{{import.methodName}}"
+             selector="{{section.seeMethodName}}"
+             stepKey="seeMethodNameStep_3"/>
+
+        <see userInput="Shipping cost for {{shipping.countryFR}}"
+             selector="{{section.seeMethodTitle}}"
+             stepKey="seeMethodTitleStep_3"/>
+        <!-- test for third country:END -->
+
+        <!-- test for fourth country:START -->
+        <selectOption userInput="{{shipping.countryBE}}"
+                      selector="{{section.selectCountry}}"
+                      stepKey="setDeliveryCountryBEStep"/>
+
+        <wait time="5" stepKey="waitForAjaxUpdatedInfoAboutDeliveryToCountry_4"/>
+
+        <see userInput="{{import.defaultPrice}}"
+             selector="{{section.seePrice}}"
+             stepKey="seePriceStep_4"/>
+
+        <see userInput="{{import.methodName}}"
+             selector="{{section.seeMethodName}}"
+             stepKey="seeMethodNameStep_4"/>
+
+        <see userInput="{{import.title}}"
+             selector="{{section.seeMethodTitle}}"
+             stepKey="seeMethodTitleStep_4"/>
+        <!-- test for fourth country:END -->
+    </actionGroup>
+</actionGroups>

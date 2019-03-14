@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="CheckAvailabilityAtStoreFront">
+        <arguments>
+            <argument name="product"/>
+            <argument name="section"/>
+        </arguments>
+
+        <amOnPage url="{{product.name}}.html" stepKey="navigateToCustomProductPage"/>
+
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+
+        <seeInTitle userInput="{{product.name}}"
+                    stepKey="assertCustomProductNameTitle"/>
+
+        <see userInput="{{product.name}}"
+             selector="{{section.productName}}"
+             stepKey="assertCustomProductName"/>
+
+        <see userInput="{{product.price}}"
+             selector="{{section.productPrice}}"
+             stepKey="assertProductPrice"/>
+
+        <see userInput="{{product.sku}}"
+             selector="{{section.productSku}}"
+             stepKey="assertCustomProductSku"/>
+
+        <waitForPageLoad stepKey="waitForCategoryPageReload"/>
+    </actionGroup>
+</actionGroups>

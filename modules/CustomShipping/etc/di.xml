@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Sandftae\CustomShipping\Api\ExportInterface"
+                type="Sandftae\CustomShipping\Model\Export\Export" />
+
+    <preference for="Sandftae\CustomShipping\Api\ImportInterface"
+                type="Sandftae\CustomShipping\Model\Import\Import" />
+
+    <preference for="Sandftae\CustomShipping\Api\ShippingFrontValidateInterface"
+                type="Sandftae\CustomShipping\Model\ShippingFrontValidate" />
+
+    <preference for="Sandftae\CustomShipping\Api\ShippingRepositoryInterface"
+                type="Sandftae\CustomShipping\Model\ShippingRepository" />
+</config>
+

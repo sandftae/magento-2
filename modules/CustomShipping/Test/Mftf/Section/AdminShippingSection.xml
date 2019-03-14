@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="AdminShippingSection">
+        <!-- admin save a new .csv file -->
+        <element name="title" type="input" selector="#carriers_simpleshipping_title"/>
+        <element name="methodName" type="input" selector="#carriers_simpleshipping_name"/>
+        <element name="defaultPrice" type="input" selector=".validate-number.validate-zero-or-greater.input-text.admin__control-text"/>
+        <element name="attachFile" type="button" selector="#carriers_simpleshipping_import"/>
+        <element name="save" type="button" selector="#save"/>
+        <element name="saveSuccess" type="text" selector=".message.message-success.success"/>
+        <element name="rewrite" type="select" selector=".value #carriers_simpleshipping_alignment" />
+        <element name="errorMsg" type="text" selector="#carriers_simpleshipping_import-error" />
+        <element name="download" type="button" selector="#collect_button" />
+        <element name="downloadSuccess" type="text" selector="#collect_message" />
+
+        <!-- pre-create button -->
+        <element name="rightSubBtnAddBtn" type="button" selector=".action-toggle.primary.add" />
+        <element name="simpleProductBtn" type="button" selector=".item[data-ui-id='products-list-add-new-product-button-item-simple']" />
+
+        <!-- The stage of filling fields with data -->
+        <element name="name" type="input" selector=".admin__field[data-index=name] input"/>
+        <element name="sku" type="input" selector=".admin__field[data-index=sku] input"/>
+        <element name="price" type="input" selector=".admin__field[data-index=price] input"/>
+        <element name="taxClass" type="select" selector=".admin__field[data-index=tax_class_id]"/>
+        <element name="quantity" type="input" selector=".admin__field-small[data-index=qty] input"/>
+        <element name="stockStatus" type="input" selector=".admin__field[data-index=quantity_and_stock_status]"/>
+        <element name="length" type="input" selector=".admin__field-small[data-index=ts_dimensions_length] input"/>
+        <element name="width" type="input" selector=".admin__field-small[data-index=ts_dimensions_width] input"/>
+        <element name="height" type="input" selector=".admin__field-small[data-index=ts_dimensions_height] input"/>
+        <element name="weight" type="select" selector=".admin__field[data-index=product_has_weight]"/>
+        <element name="saveProduct" type="button" selector="#save-button" timeout="30"/>
+
+        <!-- buy product steps -->
+        <!-- action primary tocart  -->
+        <element name="addToCart" type="button" selector=".action.primary.tocart" timeout="30"/>
+        <element name="successAddMsg" type="button" selector="div.message-success"/>
+        <!--<element name="proceedToCheckout" type="button" selector=".action.primary.checkout" />-->
+        <element name="proceedToCheckout" type="button" selector=".checkout-methods-items .item .action.primary.checkout" />
+
+        <!-- delivery clearance -->
+        <element name="shippingAddressMsg" type="text" selector=".checkout-shipping-address .step-title"/>
+        <element name="shippingMethodsMsg" type="text" selector=".checkout-shipping-method .step-title"/>
+
+        <!-- select country -->
+        <element name="selectCountry" type="select"
+                 selector="._required[name='shippingAddress.country_id'] .control .select[name='country_id']" />
+
+        <!-- See shipping information for $$country$$ block -->
+        <element name="seePrice" type="text" selector=".price"/>
+        <element name="seeMethodName" type="text" selector=".col.col-method"/>
+        <element name="seeMethodTitle" type="text" selector=".col.col-carrier"/>
+
+        <!-- Check availability at store front -->
+        <element name="productName" type="text" selector=".base"/>
+        <element name="productPrice" type="text" selector="div.price-box.price-final_price"/>
+        <element name="productSku" type="text" selector=".product.attribute.sku>.value"/>
+    </section>
+</sections>

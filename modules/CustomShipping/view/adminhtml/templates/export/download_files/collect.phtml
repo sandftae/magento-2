@@ -1,0 +1,49 @@
+
+<?php /* @var $block \Sandftae\CustomShipping\Block\System\Config\Collect */ ?>
+
+<?php echo $block->getButtonHtml() ?>
+
+<script>
+    require([
+        'jquery',
+        'prototype',
+    ], function (JQuery) {
+        let btnDownload = document.getElementById('collect_button');
+        let canonicalUrl = '<?php echo $block->getAjaxUrl() ?>';
+        let successImg = document.getElementById('collected_img');
+        let collectMsg = document.getElementById('collect_message');
+
+        document.addEventListener("DOMContentLoaded", function () {
+           let keyStorage = new FormData();
+           let request = new XMLHttpRequest();
+           keyStorage.append('form_key', FORM_KEY);
+           request.open('POST', '/admin/export/export/export/', true);
+
+           request.onreadystatechange = function(){
+               if (this.readyState === 4 && this.status === 200) {
+                   try {
+                       let response = JSON.parse(this.responseText);
+                       btnDownload.addEventListener('click', function(){
+                           collectMsg.textContent = 'no data to export!';
+                           collectMsg.style.visibility = 'visible';
+                       })
+                   } catch (e) {
+                       btnDownload.addEventListener('click', function(){
+                           window.location.href = canonicalUrl;
+                           collectMsg.textContent = 'file transferred';
+                           collectMsg.style.visibility = 'visible';
+                           successImg.hidden = false;
+                       })
+                   }
+               }
+           };
+           request.send(keyStorage);
+        });
+    });
+</script>
+
+<span class="collect-indicator" id="collect_span" style="margin:5px 5px;">
+    <img class="collected" id="collected_img" hidden="hidden" alt="Collected" style="margin:-3px 5px"
+         src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <span id="collect_message" style="padding:5px 5px 5px -5px;margin:5px 5px;color: #FF6347;visibility:hidden;"></span>
+</span>

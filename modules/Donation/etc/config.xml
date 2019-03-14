@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sandftae_checkout_fields>
+            <general>
+                <enable_sandftae_checkout>0</enable_sandftae_checkout>
+            </general>
+        </sandftae_checkout_fields>
+        <sandftae_checkout_fields>
+            <general>
+                <sandftae_short_text_checkout>Donation</sandftae_short_text_checkout>
+            </general>
+        </sandftae_checkout_fields>
+        <sandftae_checkout_fields>
+            <general>
+                <sandftae_rates_checkout>1</sandftae_rates_checkout>
+            </general>
+        </sandftae_checkout_fields>
+    </default>
+</config>
