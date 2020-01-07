@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category ComWrap
+ * @copyright Copyright (c) 2019 ComWrap
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="GraphQL\Blog\Api\Data\CustomerReviewEntityInterface"
+                type="GraphQL\Blog\Model\CustomerReview" />
+ <preference for="GraphQL\Blog\Api\CustomerReviewRepositoryInterface"
+                type="GraphQL\Blog\Model\CustomerReviewRepository" />
+</config>

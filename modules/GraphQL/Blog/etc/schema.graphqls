@@ -1,0 +1,55 @@
+type Query {
+    customerReviewGetAll: CustomerReviews
+    @resolver(class: "GraphQL\\Blog\\Model\\Resolver\\CustomerReviewGetAll")
+    @doc(description: "Get all data from table. ")
+
+    customerReviewGetById(
+        id: Int!
+        extract_field: String
+    ): CustomerReview
+    @resolver(class: "GraphQL\\Blog\\Model\\Resolver\\CustomerReviewGetById")
+    @doc(description: "Get data by ID and by field on table. If there isn't field handler will use 'entity_id' ")
+}
+
+type Mutation {
+    createReview(
+        customer_id: Int!
+        product_id: Int!
+        customer_review: String!
+    ): CustomerReviewStatus
+    @resolver(class: "GraphQL\\Blog\\Model\\Resolver\\CreateReview")
+    @doc(description:"Create the customer review using customer ID and Product ID. Suppouse, that review making is available only for auth customer")
+
+    deleteReviewById(
+        id: Int!
+        extract_field: String!
+    ):CustomerReviewStatus
+    @resolver(class: "GraphQL\\Blog\\Model\\Resolver\\DeleteReviewsById")
+    @doc(description:"Delete all reviews written by extract_field using id")
+
+    updateProductReviewByCustomerId(
+        product_id:  Int!
+        customer_id: Int!
+        customer_review: String!
+    ): CustomerReviewStatus
+    @resolver(class: "GraphQL\\Blog\\Model\\Resolver\\CreateReview")
+    @doc(description:"Update review")
+}
+
+type CustomerReviewStatus {
+    status: Int!                @doc(description: "Status of review creating")
+    message: String!            @doc(description: "General info about result. Can including success|error messages")
+    entity: CustomerReview      @doc(description: "Entity that has been created|deleted")
+}
+
+type CustomerReviews {
+    items: [CustomerReview!]!
+    total_count: Int!
+}
+
+type CustomerReview {
+    entity_id: Int!
+    product_id: Int!
+    customer_id: Int!
+    customer_review: String!
+}
